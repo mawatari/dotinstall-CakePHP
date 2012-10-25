@@ -6,6 +6,6 @@
 
 <ul>
 	<?php foreach ($post['Comment'] as $comment): ?>
-	<li></li>
+	<li><?php echo h($comment['body']) ?> by <?php echo h($comment['commenter']) ?></li>
 	<?php endforeach; ?>
 </ul>
