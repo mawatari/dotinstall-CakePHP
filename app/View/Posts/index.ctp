@@ -6,7 +6,7 @@
 		<?php
 		echo $this->Html->link($post['Post']['title'], '/posts/view/'.$post['Post']['id']);
 		echo $this->Html->link('編集', array('action' => 'edit', $post['Post']['id']));
-		echo $this->Form->postLink('削除', array('action' => 'delete', $post['Post']['id']), array('confirm' => '削除します。良いですか？'));
+		echo $this->Html->link('削除', '#', array('class' => 'delete', 'data-post-id' => $post['Post']['id']));
 		?>
 	</li>
 <?php endforeach; ?>
@@ -15,3 +15,16 @@
 <h2>Add Post</h2>
 <?php echo $this->Html->link('Add post', array('controller' => 'posts', 'action' => 'add')) ?>
 
+
+<script>
+$(function() {
+	$('a.delete').click(function(e) {
+		if (confirm('本当に良いですか?')) {
+			$.post('/dotinstall/study-cakephp/posts/delete/'+$(this).data('post-id'), {}, function(res) {
+				$('#post_'+res.id).fadeOuto();
+			}, "json");
+		}
+		return false;
+	});
+});
+</script>
