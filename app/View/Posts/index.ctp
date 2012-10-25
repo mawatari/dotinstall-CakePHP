@@ -9,3 +9,7 @@
 	</li>
 <?php endforeach; ?>
 </ul>
+
+<h2>Add Post</h2>
+<?php echo $this->Html->link('Add post', array('controller' => 'posts', 'action' => 'add')) ?>
+
