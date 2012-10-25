@@ -2,7 +2,10 @@
 
 <ul>
 <?php foreach ($posts as $post) : ?>
-	<li><?php echo h($post['Post']['title']); ?>
+	<li>
+		<?php
+		echo $this->Html->link($post['Post']['title'], '/posts/view/'.$post['Post']['id']);
+		?>
 	</li>
 <?php endforeach; ?>
 </ul>
